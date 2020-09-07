@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block title %}Deposit{% endblock %}
+
+{% block page %}
+
+<h1 class="display-3 text-center">Deposit Money</h1>
+{% if cust %}
+<form action="{{url_for('cashier.add', cust_data = cust.cid)}}" method="post">
+	<div class="container text-center">
+		<table class="table">
+			<tbody>
+			<tr>
+				<th scope="col">Customer ID</th>
+				<td><input disabled id="cust_id" name = "cust_id" pattern=".{9}" value="{{cust.cid}}" required type="number"></td>
+			</tr>
+			<tr>
+				<th scope="col">Account ID</th>
+				<td><input disabled id="acct_id" pattern=".{9}" value="{{cust.ssn}}" required type="number"></td>
+			</tr>
+			<tr>
+				<th scope="col">Account Type</th>
+				<td><input disabled id="acct_type" value="{{cust.atype}}" required type="text"></td>
+			</tr>
+			<tr>
+				<th scope="col">Balance</th>
+				<td><input disabled id="bal" value="{{cust.balance}}" required type="number"></td>
+			</tr>
+			<tr>
+				<th scope="amt">Deposit Amount</th>
+				<td><input id="wamt" name = "wamt" placeholder="Enter amount" required type="number"></td>
+			</tr>
+			<tr>
+				<td><a class="btn btn-warning form-control" href="{{url_for('cashier.account_detail')}}">Cancel</a></td>
+				<td>
+					<button class="btn btn-primary form-control" type="submit">Deposit</button>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</form>
+<button class="btn btn-primary">Hello</button>
+{% endif %}
+{% endblock %}

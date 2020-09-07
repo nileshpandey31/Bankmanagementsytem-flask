@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block title %}Create Account{% endblock %}
+
+{% block page %}
+
+<h1 class="display-3 text-center">Create Account</h1>
+<form action="{{url_for('executives.add_account')}}" method="POST">
+	<div class="form-group">
+		<label for="ssn_id">Customer SSN ID</label>
+		<input autofocus class="form-control" id="ssn_id" name="ssn_id" pattern=".{9}" required type="number">
+	</div>
+	<div class="form-group">
+		<label for="acc_type">Type</label>
+		<select class="form-control" id="acc_type" name="acc_type" required size="1">
+			<option>Savings</option>
+			<option>Current</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="deposit_amt">Deposit Amount</label>
+		<input class="form-control" id="deposit_amt" min="1" name="deposit_amt" required type="number">
+	</div>
+
+	<button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+{% endblock %}

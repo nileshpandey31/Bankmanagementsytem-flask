@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% block title %}Account Status{% endblock %}
+
+{% block page %}
+
+<h1 class="display-3 text-center">Account Status</h1>
+
+<table class="table">
+	<thead class="thead-dark">
+	<tr>
+		<th scope="col">SSN ID</th>
+		<th scope="col">ACount Owner</th>
+		<th scope="col">Account Type</th>
+		<th scope="col">Account Balance</th>
+		<th scope="col">Last Updated</th>
+		<th scope="col">Operations</th>
+	</tr>
+	</thead>
+	<tbody>
+	{%for cust in cust%}
+	<tr>
+		<td>{{cust.ssn}}</td>
+		<td>{{cust.custName}}</td>
+		<td>{{cust.atype}}</td>
+		<td>{{cust.balance}}</td>
+		<td>{{cust.alastupdated}}</td>
+		<td><a href="">Refresh</a></td>
+	</tr>
+	{% endfor %}
+	</tbody>
+</table>
+<button class="btn btn-primary" onclick="">Refresh Entire List</button>
+
+{% endblock %}

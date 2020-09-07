@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block title %}Home{% endblock %}
+
+{% block page %}
+
+<div class="card">
+	<div class="card-header">
+		Home
+	</div>
+	<div class="card-body text-center">
+		<h1 class="display-1">Xplore Bank</h1>
+		<h1 class="h3 mb-3 font-weight-normal">Welcome
+			{% if current_user.is_executive() %}
+			Customer Executive
+			{%elif current_user.is_cashier() %}
+			Cashier
+			{%elif current_user.is_admin() %}
+			Administrator
+			{%endif%} to Xplore Bank</h1>
+	</div>
+	<div class="card-footer text-muted">
+		Best bank
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block title %}Transfer{% endblock %}
+
+{% block page %}
+
+<h1 class="display-3 text-center">Transfer Money</h1>
+{% if cust %}
+<form action="{{url_for('cashier.transfercust', cust_data = cust.cid)}}" method="post">
+	<div class="container text-center">
+		<table class="table">
+			<tbody>
+			<tr>
+				<th scope="col">Customer ID</th>
+				<td><input class="form-control" disabled id="cust_id" value="{{cust.cid}}" pattern=".{9}" type="number"></td>
+			</tr>
+
+
+
+			<tr>
+				<th scope="col">Target ID</th>
+				<td><input class="form-control" id="tar_id" name ="tar_id" pattern=".{9}" type="number"></td>
+			</tr>
+
+			<tr>
+				<th scope="col">Target Account Type</th>
+				<td><select class="form-control" id="t_acc_type" name="t_acc_type" required size="1">
+					<option>Savings</option>
+					<option>Current</option>
+				</select></td>
+			</tr>
+			<tr>
+				<th scope="amt">Transfer Amount</th>
+				<td><input class="form-control" id="wamt" name="wamt" placeholder="Enter amount" required type="number"></td>
+			</tr>
+			<tr>
+				<td><a class="btn btn-warning form-control" href="{{url_for('cashier.account_detail')}}">Cancel</a></td>
+				<td>
+					<button class="btn btn-primary form-control" type="submit">Transfer</button>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</form>
+{% endif %}
+{% endblock %}

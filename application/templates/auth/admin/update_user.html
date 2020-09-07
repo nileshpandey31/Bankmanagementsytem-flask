@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block title %}Update{% endblock %}
+
+{% block page %}
+
+<h1 class="display-3 text-center">User information</h1>
+{% if user %}
+<form action="{{url_for('routes.update_user_post', user_data = user.id)}}" method="post">
+	<div class="container text-center">
+		<table class="table">
+			<tbody>
+			<tr>
+				<th scope="col">Username</th>
+				<td><input disabled id="user_id" name="user_id" type="text" value="{{user.userId}}"></td>
+			</tr>
+			<tr>
+				<th scope="col">Name</th>
+				<td><input disabled id="uname" type="text" value="{{user.name}}"></td>
+			</tr>
+			<tr>
+				<th scope="col">New Name</th>
+				<td><input id="new_name" name="new_name" type="text"></td>
+			</tr>
+			<tr>
+				<th scope="col">Email</th>
+				<td><input disabled id="email" type="email" value="{{user.email}}"></td>
+			</tr>
+			<tr>
+				<th scope="col">New Email</th>
+				<td><input id="new_email" name="new_email" type="email"></td>
+			</tr>
+			<tr>
+				<th scope="col">Type</th>
+				<td><input disabled id="type" type="number" value="{{user.type}}"></td>
+			</tr>
+			<tr>
+				<th scope="aadhar">Aadhar</th>
+				<td><input disabled id="aadhar" name="aadhar" required type="number"></td>
+			</tr>
+			<tr>
+				<td><a class="btn btn-warning form-control" href="{{url_for('routes.user_detail')}}">Cancel</a></td>
+				<td>
+					<button class="btn btn-primary form-control" type="submit">Update</button>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</form>
+{% endif %}
+{% endblock %}

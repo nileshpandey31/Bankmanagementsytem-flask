@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block title %}Account Status{% endblock %}
+
+{% block page %}
+
+<h1 class="display-3 text-center">Account Status</h1>
+
+<table class="table">
+	<thead class="thead-dark">
+	<tr>
+		<th scope="col">Username</th>
+		<th scope="col">Name</th>
+		<th scope="col">Email</th>
+		<th scope="col">Aadhar Number</th>
+		<th scope="col">Type</th>
+	</tr>
+	</thead>
+	<tbody>
+	{% for user in all_users %}
+	<tr>
+
+		<td>{{ user.userId }}</td>
+		<td>{{ user.name }}</td>
+		<td>{{ user.email }}</td>
+		<td>{{ user.aadhar }}</td>
+		{% if user.type==0 %}
+		<td>Cashier</td>
+		{% elif user.type==1 %}
+		<td>Executive</td>
+		{% elif user.type==2 %}
+		<td>Admin</td>
+		{% endif %}
+
+	</tr>
+	{% endfor %}
+	</tbody>
+</table>
+<a class="btn btn-primary" href="{{url_for('routes.all_users')}}">Refresh Entire List</a>
+
+{% endblock %}

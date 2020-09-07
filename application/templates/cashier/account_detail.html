@@ -1,0 +1,116 @@
+{% extends 'layout.html' %}
+{% block title %}Accounts{% endblock %}
+
+{% block page %}
+
+
+<h1 class="display-3 text-center">Account operations</h1>
+<table class="table">
+	<thead class="thead-dark">
+	<tr>
+		<th scope="col">Search</th>
+		<th scope="col">Customer Information</th>
+		<th scope="col">Operations</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td>
+			<form action="{{url_for('auth.search_customer')}}" method="post">
+				<div class="form-group">
+					<label for="search_cust_id">Customer ID</label>
+					<input autofocus class="form-control" id="search_cust_id" name="search_cust_id" pattern=".{9}" type="number">
+				</div>
+				<h2 class="display-4 text-center">OR</h2>
+				<div class="form-group">
+					<label for="search_acc_id">Account ID</label>
+					<input class="form-control" id="search_acc_id" name="search_acc_id" pattern=".{9}" type="number">
+				</div>
+
+				<button class="btn btn-primary" type="submit">Find</button>
+			</form>
+		</td>
+		<td>
+			<table class="table">
+				<tbody>
+				<tr>
+					{%if cust%}
+					<th scope="col">Customer ID</th>
+					<td><input disabled id="cust_id" pattern=".{9}" type="number", value={{cust.cid}}></td>
+					{% else %}
+					<th scope="col">Customer ID</th>
+					<td><input disabled pattern=".{9}" type="number"></td>
+					{% endif %}
+				</tr>
+				<tr>
+					{%if cust%}
+					<th scope="col">Account ID</th>
+					<td><input disabled id="acct_id" pattern=".{9}" type="number", value={{cust.ssn}}></td>
+					{% else %}
+					<th scope="col">Account ID</th>
+					<td><input disabled pattern=".{9}" type="number"></td>
+					{% endif %}
+				</tr>
+				<tr>
+					{%if cust%}
+					<th scope="col">Account Type</th>
+					<td><input disabled id="acct_type" type="text", value={{cust.atype}}></td>
+					{% else %}
+					<th scope="col">Account Type</th>
+					<td><input disabled type="text"></td>
+					{% endif %}
+				</tr>
+				<tr>
+
+					{%if cust%}
+					<th scope="col">Balance</th>
+					<td><input disabled id="bal" type="number" value={{cust.balance}}></td>
+					{% else %}
+					<th scope="col">Balance</th>
+					<td><input disabled type="number"></td>
+					{% endif %}
+				</tr>
+				</tbody>
+			</table>
+		</td>
+		<td>
+			<div class="form-group">
+				{% if cust %}
+				<!--{{cust.id}}-->
+				<form action="{{url_for('cashier.deposit',cust_data=cust.cid) }}">
+				<!--<a class="btn btn-primary"
+				   href="{{url_for('cashier.deposit',cust_data=cust.id) }}">Deposit</a>-->
+				<input class="btn btn-primary" type="submit" value="Deposit">
+					</form>
+					{% endif %}
+
+			</div>
+			<div class="form-group">
+				{% if cust %}
+				<!--{{cust.id}}-->
+				<form action="{{url_for('cashier.withdraw',cust_data=cust.cid) }}">
+				<!--<a class="btn btn-primary"
+				   href="{{url_for('cashier.deposit',cust_data=cust.id) }}">Deposit</a>-->
+				<input class="btn btn-primary" type="submit" value="Withdraw">
+					</form>
+					{% endif %}
+
+			</div>
+			<div class="form-group">
+				{% if cust %}
+				<!--{{cust.id}}-->
+				<form action="{{url_for('cashier.transfer',cust_data=cust.cid) }}">
+				<!--<a class="btn btn-primary"
+				   href="{{url_for('cashier.deposit',cust_data=cust.id) }}">Deposit</a>-->
+				<input class="btn btn-primary" type="submit" value="Transfer">
+					</form>
+					{% endif %}
+
+			</div>
+		</td>
+	</tr>
+	</tbody>
+</table>
+
+
+{% endblock %}

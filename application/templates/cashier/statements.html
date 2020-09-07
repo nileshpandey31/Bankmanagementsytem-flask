@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+{% block title %}Account Statement{% endblock %}
+
+{% block page %}
+
+<h1 class="display-3 text-center">Account Statement</h1>
+<form action="{{url_for('cashier.get_statements')}}" method="post">
+	<div class="container">
+		<div class="row m-2">
+			<div class="col">
+				<label for="acc_id">Account ID</label>
+			</div>
+			<div class="col">
+				<!--add data in value -->
+				<input class="form-control" id="acc_id" name="acc_id" pattern=".{9}" required type="number"
+				       value="">
+
+			</div>
+		</div>
+
+		<div class="row m-2">
+			<div class="col">
+				<label for="transaction_type">Transaction</label>
+			</div>
+			<div class="col">
+
+				<div class="form-group">
+
+					<select class="form-control" id="transaction_type" name="transaction_type" required size="1">
+						<option>Last transactions</option>
+						<option>Start and end date</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="row m-2">
+			<div class="col">
+				<label for="num_of_t">Number of Transaction</label>
+			</div>
+			<div class="col">
+
+				<div class="form-group">
+
+					<select class="form-control" id="num_of_t" name="num_of_t" required size="1">
+						<option disabled selected>Select no. of Transaction</option>
+						{% for i in range(1,11) %}
+						<option value="{{i}}">{{i}}</option>
+						{% endfor %}
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div class="row m-2">
+			<div class="col">
+				<label for="start_date">Start Date</label>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<input class="form-control" id="start_date" name="start_date" type="date">
+				</div>
+			</div>
+		</div>
+		<div class="row m-2">
+			<div class="col">
+				<label for="end_date">End Date</label>
+			</div>
+			<div class="col">
+				<div class="form-group">
+					<input class="form-control" id="end_date" name="end_date" type="date">
+				</div>
+			</div>
+		</div>
+
+		<div class="row m-3 text-center">
+			<div class="col">
+
+				<button class="btn btn-primary" type="submit">Submit</button>
+			</div>
+		</div>
+
+	</div>
+</form>
+
+<script>
+	//var t=document.getElementById("transaction_type").selectedIndex;
+	//if(t!=1){
+	//document.getElementById("num_of_t").disabled = True;
+}
+
+</script>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'layout.html' %}
+{% block title %}Update Customer{% endblock %}
+
+{% block page %}
+
+<h1 class="display-3 text-center">Update Customer</h1>
+<div class="container">
+
+
+
+
+
+<form action="{{url_for('executives.edit_cust')}}" method="POST">
+	<div class="container">
+		<div class="row m-2">
+			<div class="col">
+				<label for="cust_id">Customer ID</label>
+			</div>
+			<div class="col">
+				<!--add data in value -->
+				<input class="form-control" readonly id="cust_id" name="cust_id" pattern=".{9}" required type="number"
+				       value="{{sfu.cid}}">
+
+			</div>
+		</div>
+
+		<div class="row m-2">
+			<div class="col">
+				<label for="cust_ssnid">SSN ID</label>
+			</div>
+			<div class="col">
+
+				<input class="form-control" readonly id="cust_ssnid" name="cust_ssnid" pattern=".{9}" required
+				       type="number" value="{{sfu.ssn}}">
+			</div>
+		</div>
+
+		<div class="row m-2">
+			<div class="col">
+				<label for="cust_name">Old Customer Name</label>
+			</div>
+			<div class="col">
+
+				<input class="form-control" readonly id="cust_name" name="cust_name" required type="text" value="{{sfu.custName}}">
+			</div>
+		</div>
+
+		<div class="row m-2">
+			<div class="col">
+				<label for="cust_new_name">New Customer Name</label>
+			</div>
+			<div class="col">
+				<input class="form-control" id="cust_new_name" name="cust_new_name" required type="text">
+			</div>
+		</div>
+
+		<div class="row m-2">
+			<div class="col">
+				<label for="cust_addr">Old Address</label>
+			</div>
+			<div class="col">
+				<input class="form-control" readonly id="cust_addr" name="cust_addr" required type="text" value="{{sfu.addr}}">
+			</div>
+		</div>
+
+		<div class="row m-2">
+			<div class="col">
+				<label for="cust_new_addr">New Address</label>
+			</div>
+			<div class="col">
+
+				<input class="form-control" id="cust_new_addr" name="cust_new_addr" required type="text">
+			</div>
+		</div>
+
+		<div class="row m-2">
+			<div class="col">
+				<label for="cust_age">Old Age</label>
+			</div>
+			<div class="col">
+
+				<input class="form-control" readonly id="cust_age" name="cust_age" required type="text" value="{{sfu.age}}">
+			</div>
+		</div>
+
+		<div class="row m-2">
+			<div class="col">
+				<label for="cust_new_age">New Age</label>
+			</div>
+			<div class="col">
+
+				<input class="form-control" id="cust_new_age" name="cust_new_age" required type="text">
+			</div>
+		</div>
+
+		<div class="row m-3 text-center">
+			<div class="col">
+
+				<button class="btn btn-primary" type="submit">Update</button>
+			</div>
+		</div>
+
+	</div>
+</form>
+
+</div>
+
+
+
+
+{% endblock %}

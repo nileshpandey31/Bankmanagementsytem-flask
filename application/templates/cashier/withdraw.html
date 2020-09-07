@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% block title %}Withdraw{% endblock %}
+
+{% block page %}
+
+<h1 class="display-3 text-center">Withdraw Money</h1>
+{% if cust %}
+<form action="{{url_for('cashier.deduct', cust_data = cust.cid)}}" method="post">
+	<div class="container text-center">
+		<table class="table">
+			<tbody>
+			<tr>
+				<th scope="col">Customer ID</th>
+				<td><input disabled id="cust_id" name = "cust_id" value="{{cust.cid}}" pattern=".{9}" type="number"></td>
+			</tr>
+			<tr>
+				<th scope="col">Account ID</th>
+				<td><input disabled id="acct_id" value="{{cust.ssn}}" pattern=".{9}" type="number"></td>
+			</tr>
+			<tr>
+				<th scope="col">Account Type</th>
+				<td><input disabled id="acct_type" value="{{cust.atype}}" type="text"></td>
+			</tr>
+			<tr>
+				<th scope="col">Balance</th>
+				<td><input disabled id="bal" value="{{cust.balance}}" type="number"></td>
+			</tr>
+			<tr>
+				<th scope="amt">Withdraw Amount</th>
+				<td><input id="wamt" name = "wamt" placeholder="Enter amount" required type="number"></td>
+			</tr>
+			<tr>
+				<td><a class="btn btn-warning form-control" href="{{url_for('cashier.account_detail')}}">Cancel</a></td>
+				<td>
+					<button class="btn btn-primary form-control"  type="submit">Withdraw</button>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</form>
+{% endif %}
+{% endblock %}

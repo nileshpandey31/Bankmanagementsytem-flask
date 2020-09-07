@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+{% block title %}Create Customer{% endblock %}
+
+{% block page %}
+
+<h1 class="display-3 text-center">Create New Customer</h1>
+<form action="{{url_for('executives.addcust')}}"  class="form-createcust"  method="post">
+	<div class="form-group">
+		<label for="ssn_id">Customer SSN id</label>
+		<input aria-describedby="helpId" autofocus class="form-control" id="ssn_id" max="999999999" min="100000000"
+		       name="ssn_id" pattern=".{9}" required type="number">
+		<small class="text-muted" id="helpId">9 digit ID</small>
+	</div>
+	<div class="form-group">
+		<label for="cust_name">Customer Name</label>
+		<input class="form-control" id="cust_name" name="cust_name" required type="text">
+	</div>
+	<div class="form-group">
+		<label for="age">Age</label>
+		<input class="form-control" id="age" max="150" name="age" required type="number">
+	</div>
+	<div class="form-group">
+		<label for="addr">Address</label>
+		<textarea class="form-control" id="addr" maxlength="150" name="addr" required rows="3"></textarea>
+	</div>
+	<div class="form-group">
+		<label for="stateSelect">State</label>
+		<select class="form-control" id="stateSelect" name="stateSelect" onchange="makeSubmenu(this.value)" size="1">
+			<option value="" disabled selected>Choose State</option>
+			<option value="Odisha">Odisha</option>
+			<option value="Maharashtra">Maharashtra</option>
+			<option value="Kerala">Kerala</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<label for="citySelect">City</label>
+		<select class="form-control" id="citySelect" name="citySelect" size="1">
+			<option value="" disabled selected>Choose City</option>
+			<option></option>
+		</select>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<button class="btn btn-primary " type="submit">Submit</button>
+
+			</div>
+			<div class="col">
+				<input class="btn btn-warning" onclick="resetFun()" type="button" value="Reset">
+			</div>
+		</div>
+	</div>
+
+	<br/>
+</form>
+
+<script>
+function resetFun() {
+  document.getElementById("create_cust").reset();
+  document.getElementById("stateSelect").selectedIndex = 0;
+$('#citySelect')
+    .empty()
+    .append('<option selected="selected" value="" disabled>Choose city</option>');
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+<br><br>
+<br>
+<br>
+
+<h2 align="center">
+    Xplore Bank
+</h2>
+
+
+<h3 align="center">Bank Statement</h3>
+<br>
+
+
+<table class="table" align="center" border="1">
+			<tbody>
+			<tr>
+				<th>Transaction ID</th>
+				<th>Consumer ID</th>
+                <th>Transaction Type</th>
+                <th>Taget Account</th>
+                <th>Tranasaction Amount</th>
+                <th>Balance</th>
+                <th>Data and Time</th>
+			</tr>
+    </tbody>
+
+        {% for i in s %}
+    <tr>
+          	    <th>{{i.Tid}}</th>
+				<th>{{i.cid}}</th>
+                <th>{{i.type}}</th>
+                <th>{{i.To_account}}</th>
+
+                <th>{{i.wamt}}</th>
+                <th>{{i.bal}}</th>
+                <th>{{i.dt}}</th>
+    </tr>
+        {% endfor %}
+
+		</table>

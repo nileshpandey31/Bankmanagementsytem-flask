@@ -1,0 +1,40 @@
+<li class="nav-item {{active}}">
+	<a class="nav-link" href="/">Home</a>
+</li>
+<div class="dropdown">
+	<button aria-expanded="false" aria-haspopup="true" class="btn dropdown-toggle" data-toggle="dropdown"
+	        id="triggerId"
+	        type="button">
+		Customer Management
+	</button>
+	<div aria-labelledby="triggerId" class="dropdown-menu">
+		<a class="dropdown-item"
+		   href="{{url_for('executives.search_customer') }}">Search Customer</a>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item"
+		   href="{{url_for('executives.create_customer') }}">Create Customer</a>
+		<a class="dropdown-item"
+		   href="{{url_for('executives.search_update') }}">Update Customer</a>
+		<a class="dropdown-item"
+		   href="{{url_for('executives.delete_customer') }}">Delete customer</a>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item"
+		   href="{{url_for('executives.customer_status') }}">Customer Status</a>
+	</div>
+</div>
+<div class="dropdown">
+	<button aria-expanded="false" aria-haspopup="true" class="btn dropdown-toggle" data-toggle="dropdown"
+	        id="triggerId1"
+	        type="button">
+		Account Management
+	</button>
+	<div aria-labelledby="triggerId1" class="dropdown-menu">
+		<a class="dropdown-item"
+		   href="{{url_for('executives.search_account') }}">Search Account</a>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item" href="{{url_for('executives.create_account') }}">Create account</a>
+		<a class="dropdown-item" href="{{url_for('executives.delete_account') }}">Delete account</a>
+		<div class="dropdown-divider"></div>
+		<a class="dropdown-item" href="{{url_for('executives.account_status') }}">Account Status</a>
+	</div>
+</div>

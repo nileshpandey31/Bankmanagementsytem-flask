@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+{% block title %}Detail{% endblock %}
+
+{% block page %}
+
+<h1 class="display-3 text-center">Customer Profile</h1>
+<form action="" method="post">
+	<div class="container text-center">
+		<table class="table">
+			<tbody>
+			<tr>
+				<th scope="col">Customer ID</th>
+				<td><input class="form-control" disabled id="cust_id" pattern=".{9}" type="number" value="{{profile.cid}}" ></td>
+
+			</tr>
+			<tr>
+				<th scope="col">Account ID</th>
+				<td><input class="form-control" disabled id="acct_id" value="{{profile.ssn}}" pattern=".{9}" type="number"></td>
+			</tr>
+			<tr>
+				<th scope="col">Customer Name</th>
+				<td><input class="form-control" disabled id="cust_name" name="" type="text" value="{{profile.custName}}"></td>
+			</tr>
+			<tr>
+				<th scope="col">Age</th>
+				<td>
+					<input class="form-control" disabled id="age" max="150" name="" type="number" value="{{profile.age}}"></td>
+			</tr>
+			<tr>
+				<th scope="col">Address</th>
+				<td>
+					<textarea class="form-control" disabled id="addr" maxlength="150" name="" rows="3" >{{profile.addr}}</textarea></td>
+			</tr>
+			<tr>
+				<th scope="col">Account Type</th>
+				<td><input class="form-control" disabled id="s_acc_type" value="{{profile.atype}}" name="s_acc_type" size="1">
+
+				</input></td>
+			</tr>
+			<tr>
+				<th scope="amt">Balance</th>
+				<td><input class="form-control" disabled id="amt" value="{{profile.balance}}" placeholder="Remaining balance" type="number"></td>
+			</tr>
+			<tr>
+				<td><a class="btn btn-warning form-control" href="{{url_for('executives.customer_status')}}">Go back</a>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</form>
+{% endblock %}

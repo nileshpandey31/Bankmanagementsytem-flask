@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block title %}Search For Update{% endblock %}
+
+{% block page %}
+<h3>SEARCH FOR UPDATE</h3>
+	<form action="{{url_for('executives.update_customer')}}" method='POST'>
+		<div class="form-group">
+			<label for="ssn_id">Customer SSN id</label>
+			<input aria-describedby="helpId" autofocus class="form-control" id="ssn_id" max="999999999" min="100000000"
+				   name="ssn_id" pattern=".{9}" required type="number">
+			<small class="text-muted" id="helpId">9 digit ID</small>
+		</div>
+		<button class="btn btn-primary " type="submit">Submit</button>
+
+
+	</form>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block title %}Delete Account{% endblock %}
+
+{% block page %}
+
+<h1 class="display-3 text-center">Delete Account</h1>
+<form action="{{url_for('executives.del_account')}}" method="post">
+	<div class="form-group">
+		<label for="cust_id">Customer SSN ID</label>
+		<select class="form-control" id="cust_id" name="cust_snid">
+
+			<option disabled selected value="">Choose SSN ID</option>
+			{% for cust in cust %}
+			<option value={{cust.ssn}}> {{cust.ssn}}
+			</option>
+			{% endfor %}
+		</select>
+	</div>
+<!--
+	{# No functionality added#}
+	<div class="form-group">
+		<label for="acc_type">Account Type</label>
+		<input class="form-control" disabled id="acc_type" type="text">
+	</div>
+-->
+
+	<button class="btn btn-primary" type="submit">Delete</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+
+automatically create admin account on startup
+username: admin
+password: admin123
+
+
+complete code is working
+Login IDS: mahes07 12345678
+aditya07 12345678
+
+Consumerid is on autoincrement:
+sample cid = 1 and 2
+
+Acc id is same as ssn
+sample acc id 123456789 and 987654321

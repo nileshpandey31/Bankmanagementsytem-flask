@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+{% block title %}Add User{% endblock %}
+
+{% block page %}
+
+<div class="card">
+	<div class="card-header">
+		Welcome to Xplore Bank
+	</div>
+	<div class="card-body text-center">
+		<form action="{{url_for('auth.signup_post')}}" class="form-signup needs-validation" method="post" novalidate>
+			<h1 class="display-1">Xplore Bank</h1>
+
+			<h1 class="h3 mb-3 font-weight-normal">User Registration Page</h1>
+
+			<div class="form-group">
+				<label class="sr-only" for="aadhar_number">Aadhar Number</label>
+				<input autofocus class="form-control" id="aadhar_number" max="999999999999" min="100000000000"
+				       name="aadhar_number"
+				       placeholder="Aadhar number" required type="number">
+				<div class="invalid-feedback">Enter 12 digit Aadhar number.</div>
+
+			</div>
+
+			<div class="form-group">
+				<label class="sr-only" for="name">Name</label>
+				<input class="form-control" id="name" name="name" placeholder="Full name" required type="text">
+			</div>
+
+			<div class="form-group">
+				<label class="sr-only" for="email">Email</label>
+				<input class="form-control" id="email" name="email" placeholder="Email" required type="email">
+				<div class="invalid-feedback">Enter valid email.</div>
+
+			</div>
+
+			<div class="form-group">
+				<label class="sr-only" for="uname">Username</label>
+				<input class="form-control" id="uname" name="uname" pattern="([A-z0-9]){8,20}" placeholder="Username"
+				       required type="text">
+				<small class="form-text text-left text-muted">Username must be greater than equal to 6</small>
+			</div>
+
+			<div class="form-group">
+				<label class="sr-only" for="password">Password</label>
+				<input class="form-control" id="password" name="password" placeholder="Password" required
+				       aria-describedby="passwordHelpBlock" type="password">
+				<small class="form-text text-left text-muted" id="passwordHelpBlock">
+					Your password must be 8-20 characters long, contain letters and numbers, and must not contain
+					spaces, special characters, or emoji.
+				</small>
+			</div>
+
+			<div class="form-group">
+				<label for="job_type">Job Description</label>
+				<select class="form-control" id="job_type" id="job_type" name="job_type" required size="1">
+					<option disabled selected value="null">Choose Job Type</option>
+					<option value="executive">Customer Executive</option>
+					<option value="cashier">Cashier/Teller</option>
+				</select>
+			</div>
+
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+		</form>
+	</div>
+	<div class="card-footer text-muted">
+		Best bank
+	</div>
+</div>
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+
+</script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block title %}Search{% endblock %}
+
+{% block page %}
+
+<h1 class="display-3 text-center">Search Account</h1>
+<form action="{{url_for('auth.search_customer')}}" method="post">
+	<div class="form-group">
+		<label for="search_cust_id">Customer ID</label>
+		<input autofocus class="form-control" id="search_cust_id" name="search_cust_id" pattern=".{9}" type="number">
+	</div>
+	<h2 class="display-4 text-center">OR</h2>
+	<div class="form-group">
+		<label for="search_acc_id">Account ID</label>
+		<input class="form-control" id="search_acc_id" name="search_acc_id" pattern=".{9}" type="number">
+	</div>
+
+	<button class="btn btn-primary" type="submit">Search</button>
+</form>
+
+{% endblock %}
